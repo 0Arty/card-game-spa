@@ -1,0 +1,25 @@
+.box {
+    background-color: red;
+    min-height: 100px;
+    width: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: #f4a261;
+    writing-mode: sideways-lr;
+    text-orientation: mixed;
+    border-radius: 0 0 0 10px ;
+    &:not(:last-child){
+        margin-bottom: 10px;
+        
+    }
+
+    a {
+        color: white;
+        font-size: 20px;
+        padding: 10px;
+    }
+
+
+}

@@ -8,6 +8,7 @@ import classNames from 'classnames';
 import Card from '../card/Card';
 import DeckStats from './deckStats/DeckStats';
 import PopUp from '../popup/PopUp';
+import Close from '../close/Close';
 
 const DeckOfCard = () => {
 
@@ -59,7 +60,7 @@ const DeckOfCard = () => {
 
     return (
         <div className={styles.box}>
-        
+            <Close />
             <PopUp />
             <div className={classNames(styles.board, styles.board1)}
                 onDragOver={(e) => { dragOverHandler(e) }}
@@ -80,6 +81,8 @@ const DeckOfCard = () => {
                         </div>
                     )}
                 </div>
+
+
                 <DeckStats id={decksIds[0]} items = {items} boardID={0}/>
             </div>
 
@@ -132,6 +135,13 @@ const DeckOfCard = () => {
                 onDrop={e => dropCardHandler(e, 3)}
             >
                 <span className={styles.span}>Карти в Інвентарі</span>
+                        <div className={styles.filters}>
+
+                        </div>
+
+
+
+
                 <div className={styles.inventoryCards}>
                     {decksIds[3].map(id =>
                         <div className={styles.card} draggable={true}

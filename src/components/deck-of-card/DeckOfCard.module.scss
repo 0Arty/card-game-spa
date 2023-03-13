@@ -12,7 +12,8 @@
     background-image: url('https://besthqwallpapers.com/Uploads/29-4-2019/89435/brown-leather-texture-grunge-brown-background-leather-background-fabric-backgrounds-leather.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-
+    // filter: blur(1px);
+    user-select: none;
     .card {
         width: 150px;
         height: 200px;
@@ -30,6 +31,10 @@
         border: 2px ridge #b86d0a;
     }
 
+    .board {
+        backdrop-filter: blur(0.4px);
+    }
+
     .board1 {
         grid-area: a;
     }
@@ -44,16 +49,26 @@
 
     .inventoryBoard {
         height: 100vh;
-        width: calc(100vw - 600px);
+        margin-left: 20px;
+        width: calc(100vw - 600px - 20px);
         grid-area: d;
-        border: 2px ridge #b86d0a;
 
+        .filters {
+            width: 100%;
+            min-height: 20px;
+            background-color: rgba(145, 13, 13, 0.589);
+        }
 
         .inventoryCards {
             height: calc(100vh - 50px);
             width: 100%;
             overflow-y: auto;
             overflow-x: hidden;
+            border: 2px ridge #b86d0a;
+
+            .card {
+                margin: 5px;
+            }
         }
     }
 
@@ -64,5 +79,13 @@
         display: flex;
         justify-content: center;
         margin-top: 5px;
+        text-shadow:
+            #000000 1px 0 10px,
+            #000000 1px 0 20px,
+            #000000 1px 0 30px,
+            #000000 1px 0 5px,
+            #000000 1px 0 4px,
+            #000000 1px 0 3px,
+            #000000 1px 0 2px;
     }
 }
