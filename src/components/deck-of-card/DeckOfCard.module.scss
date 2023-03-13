@@ -1,0 +1,68 @@
+.box {
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    display: grid;
+    grid-template-areas:
+
+        'a d'
+        'b d'
+        'c d'
+    ;
+    background-image: url('https://besthqwallpapers.com/Uploads/29-4-2019/89435/brown-leather-texture-grunge-brown-background-leather-background-fabric-backgrounds-leather.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .card {
+        width: 150px;
+        height: 200px;
+        float: left;
+
+        ::after {
+            clear: left;
+        }
+    }
+
+    .cardItem {
+        height: 200px;
+        width: 600px;
+        display: flex;
+        border: 2px ridge #b86d0a;
+    }
+
+    .board1 {
+        grid-area: a;
+    }
+
+    .board2 {
+        grid-area: b;
+    }
+
+    .board3 {
+        grid-area: c;
+    }
+
+    .inventoryBoard {
+        height: 100vh;
+        width: calc(100vw - 600px);
+        grid-area: d;
+        border: 2px ridge #b86d0a;
+
+
+        .inventoryCards {
+            height: calc(100vh - 50px);
+            width: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+    }
+
+    .span {
+        color: white;
+        font-size: 30px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        margin-top: 5px;
+    }
+}
