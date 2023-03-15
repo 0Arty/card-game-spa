@@ -9,7 +9,6 @@ const Card = ({ item }) => {
 
     const cardDeckStore = useActionCreators(cardDeckActions)
     const { name, level, damage, hitPoint, rank, image, stars } = { ...item }
-   
     let styleCard = { border: '5px ridge #c2c2c299' }
 
     if (rank === 2) { styleCard = { border: '5px ridge #30d46799' } }

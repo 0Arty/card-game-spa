@@ -15,7 +15,7 @@ const DeckOfCard = () => {
     const decksIds = useSelector(state => state.cardDeckSlice.user.decksIds)
     const cardDeckStore = useActionCreators(cardDeckActions)
     const items = useSelector(state => state.cardDeckSlice.user.cards)
-
+    console.log(items)
     const currentItemId = useSelector(state => state.cardDeckSlice.user.currentItemId)
     const currentBoardId = useSelector(state => state.cardDeckSlice.user.currentBoardId)
 

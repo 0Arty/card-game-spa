@@ -16,6 +16,18 @@
         z-index: 5;
         display: flex;
         justify-content: space-between;
+    }
+
+    .resourses{
+        
+        min-height: 25px;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        display: flex;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.295);
+        border-radius: 5px;
         
 
     }

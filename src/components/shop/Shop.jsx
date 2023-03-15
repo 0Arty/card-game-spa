@@ -4,7 +4,7 @@ import styles from './Shop.module.scss';
 import Tabs from './tabs/Tabs';
 import Resourses from './resourses/Resourses';
 import Offers from './offers/Offers';
-
+import Close from '../close/Close'
 const Shop = ({ }) => {
 
     return (

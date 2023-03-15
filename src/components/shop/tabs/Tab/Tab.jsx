@@ -5,10 +5,13 @@ import styles from './Tab.module.scss';
 
 const Tab = ({ title, link }) => {
 
+
+    const setActive = ({isActive}) => isActive ? styles.active : ''
+
     return (
         <div className={styles.box}>
 
-                <Link to={link} className={styles.link}>
+                <Link to={link} className={setActive} >
                     <span>{title}</span>
                 </Link>
 
