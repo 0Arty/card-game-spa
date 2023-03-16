@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import styles from './DeckOfCard.module.scss';
 
 import { useSelector } from 'react-redux';
@@ -15,18 +15,13 @@ const DeckOfCard = () => {
     const decksIds = useSelector(state => state.cardDeckSlice.user.decksIds)
     const cardDeckStore = useActionCreators(cardDeckActions)
     const items = useSelector(state => state.cardDeckSlice.user.cards)
-    console.log(items)
     const currentItemId = useSelector(state => state.cardDeckSlice.user.currentItemId)
     const currentBoardId = useSelector(state => state.cardDeckSlice.user.currentBoardId)
 
-    const dragOverHandler = (e) => e.preventDefault()
+    const dragOverHandler = (e) => {e.preventDefault()}
+    const dragLeaveHandler = (e) => {}
+    const dragEndHandler = (e) => {}
 
-    const dragLeaveHandler = (e) => { }
-
-
-    const dragEndHandler = (e) => {
-
-    }
     const dragStartHandler = (e, id, boardId) => {
 
         cardDeckStore.setCurrentBoardId(boardId)
@@ -34,10 +29,19 @@ const DeckOfCard = () => {
 
     }
     const dropHandler = (e, id, boardId) => {
+
+        // id - це ID карти на яку ми кладем карту, яка знаходиться в руці
+        // currentItemId - це ID карти яку ми тримаэмо в руці
+
         e.preventDefault()
         const newIds = [...decksIds[boardId]]
-        newIds.splice(newIds.indexOf(id), 1)
-        newIds.splice(newIds.indexOf(id) + 1, 0, id)
+
+
+        const indexOnHandle = newIds.indexOf(currentItemId)
+        const indexOnBoard = newIds.indexOf(id)
+
+        newIds.splice(newIds.indexOf(currentItemId), 1)
+        newIds.splice(newIds.indexOf(id) + 1, 0, currentItemId)
         cardDeckStore.setBoardIds(newIds)
 
     }
@@ -48,8 +52,10 @@ const DeckOfCard = () => {
             const newIds2 = [...decksIds[currentBoardId]]
 
             if (newIds1.length < 4 || boardId === 3) {
-                newIds1.push(currentItemId)
+
                 newIds2.splice(newIds2.indexOf(currentItemId), 1)
+                newIds1.push(currentItemId)
+
                 cardDeckStore.setBoardsIds({ newIds1, boardId, newIds2, currentBoardId, })
             }
         }
@@ -75,15 +81,16 @@ const DeckOfCard = () => {
                             onDragEnd={e => dragEndHandler(e)}
                             onDragOver={e => dragOverHandler(e)}
                             onDrop={e => dropHandler(e, id, 0)}
+                            key={id}
                         >
 
-                            {items[id] ? <Card item={items[id]} /> : null}
+                            {items[id] ? <Card item={items[id]} key={id} id={id} /> : null}
                         </div>
                     )}
                 </div>
 
 
-                <DeckStats id={decksIds[0]} items = {items} boardID={0}/>
+                <DeckStats id={decksIds[0]} items={items} boardID={0} />
             </div>
 
 
@@ -100,12 +107,13 @@ const DeckOfCard = () => {
                             onDragEnd={e => dragEndHandler(e)}
                             onDragOver={e => dragOverHandler(e)}
                             onDrop={e => dropHandler(e, id, 1)}
+                            key={id}
                         >
-                            {items[id] ? <Card item={items[id]} /> : null}
+                            {items[id] ? <Card item={items[id]} key={id} id={id} /> : null}
                         </div>
                     )}
                 </div>
-                <DeckStats id={decksIds[1]} items = {items} boardID={1}/>
+                <DeckStats id={decksIds[1]} items={items} boardID={1} />
             </div>
 
             <div className={classNames(styles.board, styles.board3)}
@@ -121,13 +129,14 @@ const DeckOfCard = () => {
                             onDragEnd={e => dragEndHandler(e)}
                             onDragOver={e => dragOverHandler(e)}
                             onDrop={e => dropHandler(e, id, 2)}
+                            key={id}
                         >
-                            {items[id] ? <Card item={items[id]} /> : null}
+                            {items[id] ? <Card item={items[id]} key={id} id={id} /> : null}
                         </div>
 
                     )}
                 </div>
-                <DeckStats id={decksIds[2]} items = {items} boardID={2}/>
+                <DeckStats id={decksIds[2]} items={items} boardID={2} />
             </div>
 
             <div className={styles.inventoryBoard}
@@ -135,12 +144,9 @@ const DeckOfCard = () => {
                 onDrop={e => dropCardHandler(e, 3)}
             >
                 <span className={styles.span}>Карти в Інвентарі</span>
-                        <div className={styles.filters}>
+                <div className={styles.filters}>
 
-                        </div>
-
-
-
+                </div>
 
                 <div className={styles.inventoryCards}>
                     {decksIds[3].map(id =>
@@ -150,8 +156,9 @@ const DeckOfCard = () => {
                             onDragEnd={e => dragEndHandler(e)}
                             onDragOver={e => dragOverHandler(e)}
                             onDrop={e => dropHandler(e, id, 3)}
+                            key={id}
                         >
-                            {items[id] ? <Card item={items[id]} /> : null}
+                            {items[id] ? <Card item={items[id]} key={id} id={id} /> : null}
                         </div>
                     )}
                 </div>
@@ -161,5 +168,4 @@ const DeckOfCard = () => {
         </div>
     );
 };
-
 export default DeckOfCard;

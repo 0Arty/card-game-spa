@@ -60,10 +60,13 @@
         }
 
         .inventoryCards {
-            height: calc(100vh - 50px);
+            height: calc( 100vh - 80px);
             width: 100%;
             overflow-y: auto;
             overflow-x: hidden;
+            scrollbar-width: thin;
+            scrollbar-color: #c2955b #b86d0a0e;
+
             border: 2px ridge #b86d0a;
 
             .card {

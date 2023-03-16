@@ -2,11 +2,11 @@
     position: absolute;
     width: 600px;
     height: 800px;
-    background-color: red;
     z-index: 100;
     margin: 0 auto;
     top: calc(20vh / 2);
     left: calc(70vw / 2);
+    box-sizing: content-box;
     .cardFont{
         width: 100%;
         height: 100%;
