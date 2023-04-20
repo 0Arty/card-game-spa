@@ -1,17 +1,17 @@
 import React from 'react'
 import Card from '../../../card/Card';
 import styles from './OfferCard.module.scss';
-import { cardDeckActions } from '../../../../redux/cardDeckSlice';
-import { useActionCreators } from '../../../../hooks/useActionCreator'
 
 
-const  OfferCard = ({cardInfo, price, resourseIndex, offerIndex}) => {
 
-    const cardDeckStore = useActionCreators(cardDeckActions)
+const  OfferCard = ({cardInfo, price, offerIndex, resourse, buyCard}) => {
+
+
 
     const buyHandler = () =>{
-        console.log('offerIndex', offerIndex)
-        cardDeckStore.buyOffer({resourseIndex, offerIndex})
+        if(resourse >= price){
+            buyCard(price, offerIndex, cardInfo)
+        }
     }
 
     return (

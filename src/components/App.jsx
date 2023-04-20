@@ -1,24 +1,30 @@
-import React from 'react'
-import styles from './App.module.scss';
-import { Routes, Route } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import Navigation from './Navigation';
 
-import Menu from './menu/Menu';
-import Inventory from './inventory/Inventory';
-import DeckOfCard from './deck-of-card/DeckOfCard';
-import Shop from './shop/Shop'
+import { useSelector } from 'react-redux';
+import Auth from './auth/Auth';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = ({ }) => {
 
+    const navigate = useNavigate()
+    const isAuth = useSelector(state => state.user.isAuth)
+
+    useEffect(()=>{
+        if (isAuth) {
+           navigate('/game')
+        } else {
+            navigate('/')
+        }
+    }, [isAuth])
+
+
     return (
-        <div className={styles.box}>
-            <Routes>
-                <Route path="/" element={<Menu />} />
-                <Route path="/player-inventory/*" element={<Inventory />} />
-                <Route path="/deck-of-cards/*" element={<DeckOfCard />} />
-                <Route path="/shop*" element={<Shop />} />
-            </Routes>
-
-
+        <div>
+            {isAuth ? <Navigation /> : <Auth />}
+            <ToastContainer position='bottom-right'/>
         </div>
     );
 };

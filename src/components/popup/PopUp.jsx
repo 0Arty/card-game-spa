@@ -1,19 +1,20 @@
 import React from 'react';
 import s from './PopUp.module.scss'
-import { cardDeckActions } from '../../redux/cardDeckSlice'
 import { useActionCreators } from '../../hooks/useActionCreator';
 
 import { motion, AnimatePresence } from "framer-motion"
 import { useSelector } from 'react-redux';
+import { gameSliceActions } from '../../redux/gameSlice';
 
 const PopUp = () => {
 
-    const cardDeckStore = useActionCreators(cardDeckActions)
-    const popUpInfo = useSelector(state => state.cardDeckSlice.popUpInfo)
+    const gameStore = useActionCreators(gameSliceActions)
+    
+    const popUpInfo = useSelector(state => state.game.popUpInfo)
     const { name, level, damage, hitPoint, rank, image, stars } = { ...popUpInfo.info }
 
     const onClickHandler = (e) => {
-        cardDeckStore.closePopUp()
+        gameStore.closePopUp()
     }
 
     return (

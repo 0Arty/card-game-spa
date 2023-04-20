@@ -6,14 +6,18 @@ import { Link } from 'react-router-dom'
 
 const  Resourses = ({}) => {
 
-    const resourses = useSelector(state => state.cardDeckSlice.user.resourses)
+    const diamonds = useSelector(state => state.user.diamonds)
+    const emeralds = useSelector(state => state.user.emeralds)
+    const souls = useSelector(state => state.user.souls)
 
     return (
         <div className={styles.box}>
-                {
-                    resourses.map( (resourse, index) => <Resours count ={resourse.count} name={resourse.name} key={index}/> )
-                }
-                <Link to='/' className={styles.link}>X</Link>
+                
+                   <Resours count={diamonds} name={'Діаманти'} /> 
+                   <Resours count={emeralds} name={'Смарагди'} /> 
+                   <Resours count={souls} name={'Душі'} /> 
+                
+                <Link to='/game' className={styles.link}>X</Link>
 
         </div>  
     );

@@ -12,18 +12,23 @@ import Close from '../close/Close';
 
 const DeckOfCard = () => {
 
-    const decksIds = useSelector(state => state.cardDeckSlice.user.decksIds)
     const cardDeckStore = useActionCreators(cardDeckActions)
-    const items = useSelector(state => state.cardDeckSlice.user.cards)
-    const currentItemId = useSelector(state => state.cardDeckSlice.user.currentItemId)
-    const currentBoardId = useSelector(state => state.cardDeckSlice.user.currentBoardId)
+    const decksIds = useSelector(state => state.card.decksIds)
+    const items = useSelector(state => state.card.cards)
+    const currentItemId = useSelector(state => state.card.currentItemId)
+    const currentBoardId = useSelector(state => state.card.currentBoardId)
 
     const dragOverHandler = (e) => {e.preventDefault()}
     const dragLeaveHandler = (e) => {}
     const dragEndHandler = (e) => {}
 
     const dragStartHandler = (e, id, boardId) => {
+        // cardDeckStore.getSomething({id})
+        // .then(unwrapResult)
+        // .then((data) => {
 
+        // })
+        // .catch((e) => {})
         cardDeckStore.setCurrentBoardId(boardId)
         cardDeckStore.setCurrentItemId(id)
 
@@ -35,10 +40,6 @@ const DeckOfCard = () => {
 
         e.preventDefault()
         const newIds = [...decksIds[boardId]]
-
-
-        const indexOnHandle = newIds.indexOf(currentItemId)
-        const indexOnBoard = newIds.indexOf(id)
 
         newIds.splice(newIds.indexOf(currentItemId), 1)
         newIds.splice(newIds.indexOf(id) + 1, 0, currentItemId)
@@ -60,7 +61,7 @@ const DeckOfCard = () => {
             }
         }
 
-        // console.log('boardId :', boardId)
+        
     }
 
 

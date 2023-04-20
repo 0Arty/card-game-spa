@@ -7,9 +7,9 @@ const  Tabs = ({}) => {
 
     return (
         <div className={styles.box}>
-            <Tab title={'Діаманти'} link={'/shop/diamonds'}/>
-            <Tab title={'Смарагди'} link={'/shop/emeralds'}/>
-            <Tab title={'Темні душі'} link={'/shop/souls'}/>
+            <Tab title={'Діаманти'} link={'diamonds'}/>
+            <Tab title={'Смарагди'} link={'emeralds'}/>
+            <Tab title={'Темні душі'} link={'souls'}/>
         </div>
     );
 };
