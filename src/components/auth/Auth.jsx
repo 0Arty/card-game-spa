@@ -22,23 +22,16 @@ const Auth = ({ }) => {
             <video loop autoPlay muted className={styles.video} >
                 <source src={video} type='video/mp4' />
             </video>
-
-
             <div className={styles.wrapper}>
-
                 {/* <RegisterForm /> */}
-
                 <Routes>
                     <Route path="/" element={<RegisterLinks />} />
                     <Route path="/register" element={<RegisterForm />} />
                     <Route path="/login" element={<LoginForm />} />
-
                 </Routes>
             </div>
         </div>
     );
 };
-
-
 
 export default Auth;

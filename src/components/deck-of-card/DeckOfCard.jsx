@@ -18,9 +18,9 @@ const DeckOfCard = () => {
     const currentItemId = useSelector(state => state.card.currentItemId)
     const currentBoardId = useSelector(state => state.card.currentBoardId)
 
-    const dragOverHandler = (e) => {e.preventDefault()}
-    const dragLeaveHandler = (e) => {}
-    const dragEndHandler = (e) => {}
+    const dragOverHandler = (e) => { e.preventDefault() }
+    const dragLeaveHandler = (e) => { }
+    const dragEndHandler = (e) => { }
 
     const dragStartHandler = (e, id, boardId) => {
         // cardDeckStore.getSomething({id})
@@ -61,7 +61,7 @@ const DeckOfCard = () => {
             }
         }
 
-        
+
     }
 
 
